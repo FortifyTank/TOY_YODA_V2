@@ -45,6 +45,19 @@ body {
     gap: 20px;
 }
 
+/* Update the .logo container to use Flexbox */
+.logo {
+    display: flex;       /* This puts the image and text in a row */
+    align-items: center; /* This centers them vertically */
+    gap: 15px;           /* Adds space between the image and the text */
+}
+
+/* Control the size of the logo image */
+.logo img {
+    height: 60px; /* Adjust this number to make the logo bigger/smaller */
+    width: auto;  /* Keeps the aspect ratio correct */
+}
+
 .logo h1 {
     font-weight: 800;
     font-style: italic;
