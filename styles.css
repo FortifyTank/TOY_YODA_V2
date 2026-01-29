@@ -1,54 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;800&display=swap');
 
-/* =========================================
-   1. GLOBAL VARIABLES (THEME SETTINGS)
-   Change colors here to update the whole site
-   ========================================= */
+/*theme colors based on "Yoda Green" from Star Wars*/
 :root {
-    /* --- COLORS --- */
+    /* general colors */
     --bg-color: #f4f4f4;       /* Main background of the page */
     --header-bg: #1a1a1a;      /* Top bar background */
-    --accent-color: #78be20;   /* The "Yoda Green" highlight */
+    --accent-color: #78be20;   /* The YODA GREEN highlight */
     --text-color: #111111;     /* Main text color */
     --card-bg: #ffffff;        /* Background for white boxes/cards */
     --btn-text: #000000;       /* Text color inside buttons */
     
-    /* --- BORDERS & SHADOWS --- */
+    /* Border and Shadow Colors */
     --border-color: #e0e0e0;   /* Light grey for subtle borders */
     --shadow-color: rgba(0,0,0,0.1); /* Shadow color */
     
-    /* --- SIZES --- */
+    /* Image size variables */
     --brand-img-size: 150px;   /* Max size for Brand Logos (Marvel, DC, etc.) */
 }
 
-/* =========================================
-   UTILITY CLASSES (Reusable Styles)
-   ========================================= */
-
-/* Small Icon (Perfect for buttons like Search) */
+/* image utility classes for different icon sizes */
 .icon-sm {
     height: 20px;
     width: auto;
-    display: block; /* Removes weird gaps below images */
+    display: block; /* Ensures proper spacing */
 }
 
-/* Medium Icon (Perfect for Navbar/Profile) */
+/* Medium Icon */
 .icon-md {
     height: 35px;
     width: auto;
     display: block;
 }
 
-/* Large Icon (For Brand Logos if needed) */
+/* Large Icon */
 .icon-lg {
     height: 60px;
     width: auto;
     display: block;
 }
 
-/* =========================================
-   2. GENERAL RESET & BODY
-   ========================================= */
+/* general resets and body styling */
 * {
     margin: 0;
     padding: 0;
@@ -61,9 +52,7 @@ body {
     color: var(--text-color);
 }
 
-/* =========================================
-   3. HEADER SECTION
-   ========================================= */
+/* header styling */
 .main-header {
     background-color: var(--header-bg);
     padding: 15px 0;
@@ -84,7 +73,7 @@ body {
     gap: 20px;
 }
 
-/* --- Logo Styling --- */
+/* logo styling */
 .logo {
     display: flex;
     align-items: center;
@@ -104,7 +93,7 @@ body {
     white-space: nowrap; /* Prevents "TOY YODA" from breaking into two lines */
 }
 
-/* --- Search Bar Styling --- */
+/* search bar styling */
 .search-bar {
     display: flex;
     flex-grow: 1; /* Allows search bar to stretch and fill space */
@@ -128,7 +117,7 @@ body {
     font-size: 1.2rem;
 }
 
-/* --- User Actions (Profile & Cart) --- */
+/* user actions (profile and cart) styling */
 .user-actions {
     display: flex;
     gap: 20px;
@@ -153,9 +142,7 @@ body {
     font-weight: bold;
 }
 
-/* =========================================
-   4. NAVIGATION BAR
-   ========================================= */
+/* navigation bar styling */
 .category-nav {
     background-color: #111111; 
     border-top: 1px solid #333;
@@ -167,7 +154,7 @@ body {
     margin: 0 auto;
     list-style: none; /* Removes bullet points */
     display: flex;
-    gap: 30px;
+    gap: 40px;
     padding: 0 20px;
 }
 
@@ -176,7 +163,7 @@ body {
     text-decoration: none; /* Removes underline */
     font-weight: 500;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     transition: color 0.3s;
 }
 
@@ -184,9 +171,7 @@ body {
     color: var(--accent-color); /* Turns green on hover */
 }
 
-/* =========================================
-   5. HERO SLIDER (The Big Banner)
-   ========================================= */
+/* the hero slider styling (the big ass star wars one*/
 .hero-slider {
     max-width: 1200px;
     margin: 20px auto;
@@ -216,9 +201,7 @@ body {
     border-radius: 4px;
 }
 
-/* =========================================
-   6. BRANDS SECTION (Marvel, DC, etc.)
-   ========================================= */
+/* different brands section styles */
 .section-title {
     max-width: 1200px;
     margin: 30px auto 15px;
@@ -258,7 +241,6 @@ body {
     border-color: var(--accent-color); /* Green border on hover */
 }
 
-/* FIXED: Increased brand image size */
 .brand-card img {
     width: 100%;
     max-width: var(--brand-img-size); /* Controlled by Variable at top */
@@ -271,9 +253,7 @@ body {
     font-size: 1.1rem;
 }
 
-/* =========================================
-   7. PRODUCTS SECTION
-   ========================================= */
+/* New arrivals and products section styles */
 .products-section {
     margin-bottom: 50px;
 }
@@ -313,7 +293,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* "Hot" or "New" Badges */
+/* "Hot or New badge on top left*/
 .badge {
     position: absolute;
     top: 10px;
@@ -326,12 +306,10 @@ body {
     border-radius: 4px;
 }
 
-/* FIXED: Alignment for Product Info */
 .product-card h3 {
     font-size: 1.1rem;
     margin-bottom: 5px;
     
-    /* This is the magic trick! */
     margin-top: auto; /* Pushes the title (and everything below it) to the bottom */
 }
 
@@ -361,9 +339,7 @@ body {
     color: var(--btn-text);
 }
 
-/* =========================================
-   8. FOOTER
-   ========================================= */
+/* website footer styling */
 footer {
     text-align: center;
     padding: 40px;
