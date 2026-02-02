@@ -6,6 +6,7 @@
     <title>Toy Yoda Shop</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <header class="main-header">
@@ -86,36 +87,61 @@
                 <img src="images/baby_yoda_toy.png" alt="Toy 1">
                 <h3>Baby Yoda Plush</h3>
                 <p class="price">₱400.00</p>
-                <button class="add-btn">Add to Cart</button>
+                <button class="add-btn"
+                    data-name="Baby Yoda"
+                    data-price="400">
+                    Add to Cart</button>
             </div>
 
             <div class="product-card">
                 <img src="Images/optimus_prime_toy.jpg" alt="Toy 2">
                 <h3>Optimus Prime</h3>
                 <p class="price">₱1,200.00</p>
-                <button class="add-btn">Add to Cart</button>
+                <button class="add-btn"
+                    data-name="Optimum Pride"
+                    data-price="1200">
+                    Add to Cart</button>
             </div>
 
             <div class="product-card">
                 <div class="badge">NEW</div>
-                <img src="Images/iron_man_hulkbuster_toy.jpg"Toy 3">
+                <img src="Images/iron_man_hulkbuster_toy.jpg" alt= "Toy 3">
                 <h3>Iron Man Hulkbuster</h3>
                 <p class="price">₱800.00</p>
-                <button class="add-btn">Add to Cart</button>
+                <button class="add-btn"
+                    data-name="Iron Man Hulkbuster"
+                    data-price="800">
+                    Add to Cart</button>
             </div>
 
             <div class="product-card">
                 <img src="images/x_wing_toy.jpg" alt="Toy 4">
                 <h3>X-Wing Fighter</h3>
                 <p class="price">₱1,800.00</p>
-                <button class="add-btn">Add to Cart</button>
+                <button class="add-btn"
+                    data-name="X-Wing"
+                    data-price="1000">
+                    Add to Cart</button>
             </div>
         </div>
     </section>
 
+    <!-- cart stuff-->
+
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Your Cart</h2>
+            <ul class="cart-items"></ul>
+            <p class="cart-total">Total: ₱0.00</p>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026 Toy Yoda Shop. "Persuaded my dad to sell some of his toys"</p>
+        <p>&copy; 2026 Toy Yoda Shop. "Persuaded my dad to sell some of his toys (without his consent btw (im going to prison))"</p>
     </footer>
+
+    <script src="script.js"></script> <!-- to link to the javascript stuff-->
 
 </body>
 </html>

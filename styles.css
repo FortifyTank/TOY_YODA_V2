@@ -347,3 +347,50 @@ footer {
     color: #888;
     border-top: 3px solid var(--accent-color);
 }
+
+/* cart stuff after thuis*/
+.cart-modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.cart-modal-content {
+    background-color: var(--card-bg);
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.close-btn {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cart-items {
+    list-style: none;
+    margin: 15px 0;
+    padding: 0;
+}
+
+.cart-items li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cart-total {
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    text-align: right;
+}
