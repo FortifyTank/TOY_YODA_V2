@@ -59,19 +59,22 @@
     <section class="brands-section">
         <h2 class="section-title">Shop by Brand</h2>
         <div class="brand-grid">
-            <div class="brand-card">
+            <div class="brand-card category-btn" data-category="All">
+                <span>All</span>
+            </div>
+            <div class="brand-card category-btn" data-category="Marvel">
                 <img src="images/storm_trooper_placeholder.jpg" alt="Marvel">
                 <span>Marvel</span>
             </div>
-            <div class="brand-card">
+            <div class="brand-card category-btn" data-category="Transformers">
                 <img src="images/storm_trooper_placeholder.jpg" alt="Transformers">
                 <span>Transformers</span>
             </div>
-            <div class="brand-card">
+            <div class="brand-card category-btn" data-category="DC">
                 <img src="images/storm_trooper_placeholder.jpg" alt="DC">
                 <span>DC</span>
             </div>
-            <div class="brand-card">
+            <div class="brand-card category-btn" data-category="Star Wars">
                 <img src="images/storm_trooper_placeholder.jpg" alt="Star Wars">
                 <span>Star Wars</span>
             </div>
@@ -82,7 +85,7 @@
         <h2 class="section-title">New Arrivals & Hot Picks</h2>
         
         <div class="product-grid">
-            <div class="product-card">
+            <div class="product-card" data-category="Star Wars">
                 <div class="badge">HOT</div>
                 <img src="images/baby_yoda_toy.png" alt="Toy 1">
                 <h3>Baby Yoda Plush</h3>
@@ -93,7 +96,7 @@
                     Add to Cart</button>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-category="Transformers">
                 <img src="Images/optimus_prime_toy.jpg" alt="Toy 2">
                 <h3>Optimus Prime</h3>
                 <p class="price">₱1,200.00</p>
@@ -103,7 +106,7 @@
                     Add to Cart</button>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-category="Marvel">
                 <div class="badge">NEW</div>
                 <img src="Images/iron_man_hulkbuster_toy.jpg" alt= "Toy 3">
                 <h3>Iron Man Hulkbuster</h3>
@@ -114,7 +117,7 @@
                     Add to Cart</button>
             </div>
 
-            <div class="product-card">
+            <div class="product-card" data-category="Star Wars">
                 <img src="images/x_wing_toy.jpg" alt="Toy 4">
                 <h3>X-Wing Fighter</h3>
                 <p class="price">₱1,800.00</p>
@@ -134,6 +137,8 @@
             <h2>Your Cart</h2>
             <ul class="cart-items"></ul>
             <p class="cart-total">Total: ₱0.00</p>
+
+            <button class="clear-cart-btn">Clear Your Cart</button>
         </div>
     </div>
 
