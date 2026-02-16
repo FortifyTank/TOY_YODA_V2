@@ -394,3 +394,79 @@ footer {
     font-size: 1.1rem;
     text-align: right;
 }
+
+/* ===== Auth pages ===== */
+.auth-wrap{
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-card{
+  width: 100%;
+  max-width: 420px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  padding: 24px;
+}
+
+.auth-card h2{
+  margin-bottom: 6px;
+}
+
+.auth-subtext{
+  margin-bottom: 18px;
+  color: #444;
+}
+
+.auth-card label{
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 600;
+}
+
+.auth-card input{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-family: 'Kanit', sans-serif;
+}
+
+.auth-btn{
+  margin-top: 14px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--accent-color);
+  color: var(--btn-text);
+}
+
+.auth-small{
+  margin-top: 14px;
+  text-align: center;
+}
+
+/* ===== Cart checkout button ===== */
+.checkout-btn{
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Kanit', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: var(--accent-color);
+  color: var(--btn-text);
+}

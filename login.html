@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Toy Yoda | Register</title>
+  <title>Toy Yoda | Login</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -23,23 +23,24 @@
 
   <section class="auth-wrap">
     <div class="auth-card">
-      <h2>Register</h2>
+      <h2>Login</h2>
 
-      <form id="registerForm">
-        <label>Full Name</label>
-        <input id="regName" type="text" placeholder="Juan Dela Cruz" required>
+      <p class="auth-subtext">
+        Login to checkout your cart.
+      </p>
 
+      <form id="loginForm">
         <label>Email</label>
-        <input id="regEmail" type="email" placeholder="example@email.com" required>
+        <input id="loginEmail" type="email" placeholder="example@email.com" required>
 
         <label>Password</label>
-        <input id="regPass" type="password" placeholder="Create a password" required>
+        <input id="loginPass" type="password" placeholder="••••••••" required>
 
-        <button type="submit" class="auth-btn">Create Account</button>
+        <button type="submit" class="auth-btn">Login</button>
       </form>
 
       <p class="auth-small">
-        Already have an account? <a href="login.html">Login</a>
+        No account yet? <a href="regPage.html">Register</a>
       </p>
     </div>
   </section>
