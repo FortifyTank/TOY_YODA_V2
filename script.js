@@ -1,14 +1,3 @@
-function saveCart() {
-    localStorage.setItem("toyYodaCart", JSON.stringify(cart));
-}
-
-function loadCart() {
-    const stored = localStorage.getItem("toyYodaCart");
-    if (stored) {
-        cart = JSON.parse(stored);
-        cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-    }
-}
 
 // Resume checkout after login
 const params = new URLSearchParams(window.location.search);
@@ -32,8 +21,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartCountElement = document.querySelector(".cart-count");
     const addButtons = document.querySelectorAll(".add-btn");
     const cartModal = document.getElementById("cartModal");
+    const params = new URLSearchParams(window.location.search);
+    const productCards = document.querySelectorAll(".product-card");
+    const title = document.getElementById("categoryTitle");
+    const checkoutBtn = cartModal.querySelector(".checkout-btn");
+    const categoryButtons = document.querySelectorAll(".category-btn");
+    const initialCategory = params.get("category") || "All";
 
     let closeBtn, cartItemsElement, cartTotalElement, cartIcon, clearCartBtn;
+
+    // filters category by URL
+    function filterCategory(category) {
+        title.textContent = category === "All" ? "All Products" : category;
+
+        productCards.forEach(card => {
+            card.style.display = (category === "All" || card.dataset.category === category) ? "" : "none";
+        });
+    }
+
+    filterCategory(initialCategory);
 
     if (cartModal) {
         closeBtn = cartModal.querySelector(".close-btn");
@@ -42,11 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
         cartIcon = document.querySelector(".cart-icon");
         clearCartBtn = cartModal.querySelector(".clear-cart-btn");
     }
-
-    const categoryButtons = document.querySelectorAll(".category-btn");
-    const productCards = document.querySelectorAll(".product-card");
-    
-    const checkoutBtn = cartModal.querySelector(".checkout-btn");
 
     function saveCart() {
     localStorage.setItem("toyYodaCart", JSON.stringify(cart));
@@ -111,8 +112,7 @@ if (checkoutBtn) {
             cart.push({ name, price, quantity: 1 });
         }
         
-        cartCount++;
-        cartCountElement.textContent = cartCount;
+        updateCartCount();
         updateCartUI();
         console.log(cart);
 
@@ -126,7 +126,6 @@ if (checkoutBtn) {
         if (itemIndex !== -1) {
             if (cart[itemIndex].quantity > 1) {
                 cart[itemIndex].quantity--;
-                cartCount--;
             }
             else {
                 cartCount--;
@@ -134,11 +133,19 @@ if (checkoutBtn) {
             }
         }
 
+        updateCartCount();
         updateCartUI();
         saveCart();
 
         renderCart();
     }
+
+    function updateCartCount() {
+        cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+        
+        if (cartCountElement) cartCountElement.textContent = cartCount;
+    }
+
 
     function updateCartUI() {
         if (cartCountElement)
@@ -146,8 +153,12 @@ if (checkoutBtn) {
     }
 
     cartIcon.addEventListener("click", () => {
-        renderCart();
-        cartModal.style.display = "block";
+        if (cartIcon) {
+            cartIcon.addEventListener("click", () => {
+                renderCart();
+                cartModal.style.display = "block";
+            });
+        }
     });
 
     closeBtn.addEventListener("click", () => {
@@ -167,22 +178,6 @@ if (checkoutBtn) {
         updateCartUI();
         renderCart();
         saveCart()
-    });
-
-    categoryButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            
-            const category = button.dataset.category;
-
-            productCards.forEach(card => {
-                if (category === "All" || card.dataset.category === category) {
-                    card.style.display = "";
-                }
-                else {
-                    card.style.display = "none";
-                }
-            });
-        });
     });
 
     function renderCart() {
@@ -216,6 +211,7 @@ if (checkoutBtn) {
 
             cartTotalElement.textContent = `Total: ₱${total.toFixed(2)}`;
     }
+
     // ===== LOGIN STATE UI =====
 const profileIcon = document.querySelector(".profile-icon");
 

@@ -38,13 +38,18 @@
 
     <nav class="category-nav">
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Figures</a></li>
-            <li><a href="#">Sale</a></li>
+            <li><a href="products.html?category=All">All</a></li>
+            <li><a href="products.html?category=Marvel">Marvel</a></li>
+            <li><a href="products.html?category=Star%20Wars">Star Wars</a></li>
+            <li><a href="products.html?category=DC">DC</a></li>
+            <li><a href="products.html?category=Transformers">Transformers</a></li>
+
             <li><a href="#">Forum</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
+
+
 
     <section class="hero-slider">
         <div class="slide-content">
@@ -58,27 +63,31 @@
 
     <section class="brands-section">
         <h2 class="section-title">Shop by Brand</h2>
-        <div class="brand-grid">
-            <div class="brand-card category-btn" data-category="All">
-                <span>All</span>
-            </div>
-            <div class="brand-card category-btn" data-category="Marvel">
-                <img src="images/storm_trooper_placeholder.jpg" alt="Marvel">
-                <span>Marvel</span>
-            </div>
-            <div class="brand-card category-btn" data-category="Transformers">
-                <img src="images/storm_trooper_placeholder.jpg" alt="Transformers">
-                <span>Transformers</span>
-            </div>
-            <div class="brand-card category-btn" data-category="DC">
-                <img src="images/storm_trooper_placeholder.jpg" alt="DC">
-                <span>DC</span>
-            </div>
-            <div class="brand-card category-btn" data-category="Star Wars">
-                <img src="images/storm_trooper_placeholder.jpg" alt="Star Wars">
-                <span>Star Wars</span>
-            </div>
-        </div>
+    <div class="brand-grid">
+        <a class="brand-card" href="products.html?category=All">
+            <span>All</span>
+        </a>
+
+        <a class="brand-card" href="products.html?category=Marvel">
+            <img src="images/storm_trooper_placeholder.jpg" alt="Marvel">
+            <span>Marvel</span>
+        </a>
+
+        <a class="brand-card" href="products.html?category=Transformers">
+            <img src="images/storm_trooper_placeholder.jpg" alt="Transformers">
+            <span>Transformers</span>
+        </a>
+
+        <a class="brand-card" href="products.html?category=DC">
+            <img src="images/storm_trooper_placeholder.jpg" alt="DC">
+            <span>DC</span>
+        </a>
+
+        <a class="brand-card" href="products.html?category=Star%20Wars">
+            <img src="images/storm_trooper_placeholder.jpg" alt="Star Wars">
+            <span>Star Wars</span>
+        </a>
+    </div>
     </section>
 
     <section class="products-section">
@@ -87,7 +96,7 @@
         <div class="product-grid">
             <div class="product-card" data-category="Star Wars">
                 <div class="badge">HOT</div>
-                <img src="images/baby_yoda_toy.png" alt="Toy 1">
+                <img src="images/baby_yoda_toy.png">
                 <h3>Baby Yoda Plush</h3>
                 <p class="price">₱400.00</p>
                 <button class="add-btn"
@@ -97,7 +106,7 @@
             </div>
 
             <div class="product-card" data-category="Transformers">
-                <img src="Images/optimus_prime_toy.jpg" alt="Toy 2">
+                <img src="Images/optimus_prime_toy.jpg">
                 <h3>Optimus Prime</h3>
                 <p class="price">₱1,200.00</p>
                 <button class="add-btn"
@@ -108,7 +117,7 @@
 
             <div class="product-card" data-category="Marvel">
                 <div class="badge">NEW</div>
-                <img src="Images/iron_man_hulkbuster_toy.jpg" alt= "Toy 3">
+                <img src="Images/iron_man_hulkbuster_toy.jpg">
                 <h3>Iron Man Hulkbuster</h3>
                 <p class="price">₱800.00</p>
                 <button class="add-btn"
@@ -118,12 +127,12 @@
             </div>
 
             <div class="product-card" data-category="Star Wars">
-                <img src="images/x_wing_toy.jpg" alt="Toy 4">
+                <img src="images/x_wing_toy.jpg">
                 <h3>X-Wing Fighter</h3>
                 <p class="price">₱1,800.00</p>
                 <button class="add-btn"
                     data-name="X-Wing"
-                    data-price="1000">
+                    data-price="1800">
                     Add to Cart</button>
             </div>
         </div>

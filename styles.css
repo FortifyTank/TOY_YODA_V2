@@ -470,3 +470,16 @@ footer {
   background-color: var(--accent-color);
   color: var(--btn-text);
 }
+
+.category-btn.active {
+    color: var(--accent-color);
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.category-btn {
+    padding-bottom: 5px;
+}
+
+.category-btn:hover {
+    color: var(--accent-color);
+}
