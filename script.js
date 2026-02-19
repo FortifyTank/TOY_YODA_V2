@@ -1,6 +1,7 @@
 
 // Resume checkout after login
 const params = new URLSearchParams(window.location.search);
+
 if (params.get("resumeCheckout") === "1") {
     setTimeout(() => {
         const cartIcon = document.querySelector(".cart-icon");
@@ -12,27 +13,59 @@ function isLoggedIn() {
     return localStorage.getItem("toyYodaUser") !== null;
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
 
     let cart = [];
     let cartCount = 0;
 
     const cartCountElement = document.querySelector(".cart-count");
-    const addButtons = document.querySelectorAll(".add-btn");
     const cartModal = document.getElementById("cartModal");
     const params = new URLSearchParams(window.location.search);
     const productCards = document.querySelectorAll(".product-card");
     const title = document.getElementById("categoryTitle");
-    const checkoutBtn = cartModal.querySelector(".checkout-btn");
     const categoryButtons = document.querySelectorAll(".category-btn");
-    const initialCategory = params.get("category") || "All";
+    const initialCategory = params.get("category");
 
     let closeBtn, cartItemsElement, cartTotalElement, cartIcon, clearCartBtn;
 
-    // filters category by URL
+    const sidebarButtons = document.querySelectorAll(".sidebar-btn");
+
+    sidebarButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const category = btn.dataset.category;
+
+            if (!category) {
+                window.location.href = "index.html";
+                return;
+            }
+
+            filterCategory(category);
+
+            sidebarButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+        });
+    });
+
+    if (cartModal) {
+        checkoutBtn = cartModal.querySelector(".checkout-btn");
+        cartItemsElement = cartModal.querySelector(".cart-items");
+        cartTotalElement = cartModal.querySelector(".cart-total");
+        closeBtn = cartModal.querySelector(".close-btn");
+        clearCartBtn = cartModal.querySelector(".clear-cart-btn");
+        cartIcon = document.querySelector(".cart-icon");
+    }
+
     function filterCategory(category) {
-        title.textContent = category === "All" ? "All Products" : category;
+        if (title){
+            if(!category){
+                return;
+            }
+            else{
+                title.textContent = category === "All" ? "All Products" : category;
+            }
+        }
 
         productCards.forEach(card => {
             card.style.display = (category === "All" || card.dataset.category === category) ? "" : "none";
@@ -41,65 +74,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
     filterCategory(initialCategory);
 
-    if (cartModal) {
-        closeBtn = cartModal.querySelector(".close-btn");
-        cartItemsElement = cartModal.querySelector(".cart-items");
-        cartTotalElement = cartModal.querySelector(".cart-total");
-        cartIcon = document.querySelector(".cart-icon");
-        clearCartBtn = cartModal.querySelector(".clear-cart-btn");
-    }
-
     function saveCart() {
     localStorage.setItem("toyYodaCart", JSON.stringify(cart));
-}
-
-function loadCart() {
-    const stored = localStorage.getItem("toyYodaCart");
-    if (stored) {
-        cart = JSON.parse(stored);
-        cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
     }
-}
 
-function isLoggedIn() {
-    return localStorage.getItem("toyYodaUser") !== null;
-}
-
-loadCart();
-updateCartUI();
-
-if (checkoutBtn) {
-    checkoutBtn.addEventListener("click", () => {
-
-        if (cart.length === 0) {
-            alert("Your cart is empty.");
-            return;
+    function loadCart() {
+        const stored = localStorage.getItem("toyYodaCart");
+        
+        if (stored) {
+            cart = JSON.parse(stored);
+            cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
         }
+        updateCartUI();
+    }
 
-        if (!isLoggedIn()) {
-            localStorage.setItem("toyYodaPendingCheckout", "1");
-            window.location.href = "login.html";
-            return;
-        }
+    loadCart();
 
-        alert("Checkout successful! (Demo)");
-        cart = [];
-        cartCount = 0;
-        saveCart();
-        cartCountElement.textContent = cartCount;
-        renderCart();
-        cartModal.style.display = "none";
-    });
-}
+    loadCart();
+    updateCartUI();
 
-    addButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            const name = button.dataset.name;
-            const price = parseFloat(button.dataset.price);
-            
-            addToCart(name, price);
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener("click", () => {
+
+            if (cart.length === 0) {
+                alert("Your cart is empty");
+                return;
+            }
+
+            if (!isLoggedIn()) {
+                localStorage.setItem("toyYodaPendingCheckout", "1");
+                window.location.href = "login.html";
+                return;
+            }
+
+            alert("Checkout successful");
+            cart = [];
+            cartCount = 0;
+            saveCart();
+            cartCountElement.textContent = cartCount;
+            renderCart();
+            cartModal.style.display = "none";
         });
-    });
+    }
 
     function addToCart(name, price) {
         
@@ -128,7 +144,6 @@ if (checkoutBtn) {
                 cart[itemIndex].quantity--;
             }
             else {
-                cartCount--;
                 cart.splice(itemIndex, 1);
             }
         }
@@ -152,32 +167,71 @@ if (checkoutBtn) {
             cartCountElement.textContent = cartCount;
     }
 
-    cartIcon.addEventListener("click", () => {
-        if (cartIcon) {
-            cartIcon.addEventListener("click", () => {
-                renderCart();
-                cartModal.style.display = "block";
-            });
+    document.addEventListener("click", e => {
+        const button = e.target.closest(".add-btn");
+        if (!button) return;
+
+        const name = button.dataset.name;
+        const price = parseFloat(button.dataset.price);
+
+        if (name && !isNaN(price)) {
+            addToCart(name, price);
         }
     });
 
-    closeBtn.addEventListener("click", () => {
-        cartModal.style.display = "none";
-    });
+    if (cartIcon && cartModal) {
+        cartIcon.addEventListener("click", () => {
+            renderCart();
+            cartModal.style.display = "block";
+            setTimeout(() => cartModal.classList.add("show"), 10);
+        });
+
+        closeBtn.addEventListener("click", () => {
+            cartModal.classList.remove("show");
+            setTimeout(() => cartModal.style.display = "none", 300);
+        });
+
+        clearCartBtn.addEventListener("click", () => {
+            cart = [];
+            cartCount = 0;
+            updateCartUI();
+            renderCart();
+            saveCart();
+        });
+
+        checkoutBtn.addEventListener("click", () => {
+            if (cart.length === 0) {
+                alert("Your cart is empty");
+                return;
+            }
+            if (!isLoggedIn()) {
+                localStorage.setItem("toyYodaPendingCheckout", "1");
+                window.location.href = "login.html";
+                return;
+            }
+            
+            alert("Checkout Successful :D");
+            
+            cart = [];
+            cartCount = 0;
+            
+            saveCart();
+            updateCartUI();
+            renderCart();
+
+            cartModal.style.display = "none";
+        });
+    }
+
 
     window.addEventListener("click", (e) => {
         if (e.target == cartModal) {
-            cartModal.style.display = "none";
+            cartModal.classList.remove("show");
+
+            setTimeout(() => {
+                cartModal.style.display = "none";
+            }, 300);
         }
-    });
-
-    clearCartBtn.addEventListener("click", () => {
-        cart = [];
-        cartCount = 0;
-
-        updateCartUI();
-        renderCart();
-        saveCart()
     });
 
     function renderCart() {
